@@ -26,7 +26,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-around; */
   justify-content: center;
   gap: 50px;
   font-size: 36px;
@@ -35,6 +34,7 @@
   .burger {
     display: flex;
   }
+
   .link {
     display: none;
   }
