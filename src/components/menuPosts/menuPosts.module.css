@@ -43,7 +43,7 @@
 }
 
 .category.style {
-  background-color: #45a0d131;
+  background-color: #b2e42931;
 }
 
 .category.fashion {
@@ -52,14 +52,6 @@
 
 .category.food {
   background-color: #56835833;
-}
-
-.category.travel {
-  background-color: #cc604536;
-}
-
-.category.culture {
-  background-color: #b4772c45;
 }
 
 .category.coding {
