@@ -27,6 +27,7 @@
 .category {
   color: crimson;
   font-weight: 300;
+  text-transform: uppercase;
 }
 
 .desc {

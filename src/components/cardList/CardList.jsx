@@ -4,8 +4,8 @@ import Pagination from '../pagination/Pagination';
 import Card from '../card/Card';
 import { getApiUrl } from '@/utils/utils';
 
-const getData = async () => {
-  const url = getApiUrl('/api/posts');
+const getData = async (page) => {
+  const url = getApiUrl(`/api/posts?page=${page}`);
   console.log(url);
   const res = await fetch(url, { cache: 'no-store' });
   if (!res.ok) {
@@ -14,19 +14,20 @@ const getData = async () => {
   return res.json();
 };
 
-const CardList = async () => {
-  const data = await getData();
-  console.log(data);
+const CardList = async ({ page }) => {
+  const { posts, count } = await getData(page);
+  const POST_PER_PAGE = 2;
+  const hasPrev = POST_PER_PAGE * (page - 1) > 0;
+  const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count;
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Recent Posts</h1>
       <div className={styles.posts}>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {posts.map((post) => (
+          <Card post={post} key={post._id} />
+        ))}
       </div>
-      <Pagination />
+      <Pagination page={page} hasPrev={hasPrev} hasNext={hasNext} />
     </div>
   );
 };
