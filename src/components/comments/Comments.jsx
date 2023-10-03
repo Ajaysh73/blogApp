@@ -23,8 +23,9 @@ const Comments = ({ postSlug }) => {
   const { status } = useSession();
   const [desc, setDesc] = useState('');
   const url = getApiUrlClient(`/api/comments?postSlug=${postSlug}`);
-  const { data, mutate, isLoading } = useSWR(url, fetcher);
 
+  const { data, mutate, isLoading } = useSWR(url, fetcher);
+  console.log(data);
   const handleSubmit = async () => {
     await fetch(getApiUrlClient(`/api/comments`), {
       method: 'POST',
