@@ -1,7 +1,30 @@
+// {
+//   "compilerOptions": {
+//     "paths": {
+//       "@/*": ["./src/*"]
+//     }
+//   }
+// }
+
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "checkJs": true,
+    "jsx": "preserve",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "next-auth/*": ["node_modules/next-auth/*"]
     }
-  }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "next-env.d.js",
+    "**/*.js",
+    "**/*.jsx",
+    "next-auth",
+    "src"
+  ],
+  "exclude": ["node_modules"]
 }
