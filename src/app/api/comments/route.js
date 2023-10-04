@@ -6,15 +6,16 @@ import { NextResponse } from 'next/server';
 export const GET = async (req) => {
   const x = new URL(req.url);
   const { searchParams } = new URL(req.url);
-  const postSlug = parseInt(searchParams.get('postSlug'));
-
+  const postSlug = searchParams.get('postSlug');
+  console.log(postSlug);
   try {
     const comments = await prisma.comment.findMany({
       where: {
-        ...GET(postSlug && { postSlug }),
+        postSlug: postSlug,
       },
       include: { user: true },
     });
+    console.log(comments);
     return new NextResponse(JSON.stringify(comments, { status: 200 }));
   } catch (err) {
     console.log(err);
